@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>길음한의원 번아웃 증후군 자가진단</title>
+    <meta name="description" content="혹시 내 마음도 방전? 만성피로, 무기력, 스트레스로 지쳤다면 길음한의원의 번아웃 자가진단 테스트로 마음 건강을 점검해보세요.">
+    <meta name="keywords" content="번아웃, 번아웃증후군, 만성피로, 무기력, 스트레스, 길음한의원, 직장인, 학생, 번아웃 자가진단">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS 코드: 길음한의원 하늘색 테마 */
+        :root {
+            --primary-color: #5D9CEC; /* 메인 하늘색 */
+            --button-color: #4A89DC; /* 버튼 하늘색 */
+            --button-hover-color: #3B7CD2; /* 버튼 마우스오버 색상 */
+            --background-color: #F7F9FC; /* 배경색 */
+            --section-title-color: #333; /* 섹션 제목 색상 */
+        }
+
+        html {
+            font-size: 16px; 
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--background-color);
+            color: #333;
+            line-height: 1.7;
+            margin: 0;
+            padding: 20px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background-color: #fff;
+            padding: 25px 20px 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.07);
+            box-sizing: border-box;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: clamp(1.8rem, 5vw, 2.2rem);
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+        }
+
+        .header p {
+            font-size: clamp(1rem, 2.8vw, 1.1rem);
+            color: #555;
+        }
+
+        .question-section h2 {
+            font-size: 1.3rem;
+            color: var(--section-title-color);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        #burnout-form label {
+            display: flex;
+            align-items: center;
+            background-color: #fdfdfd;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            font-size: clamp(1rem, 3vw, 1.05rem);
+        }
+
+        #burnout-form label:hover {
+            background-color: #f0f5fe;
+        }
+        
+        #burnout-form label.checked {
+            background-color: #e6efff;
+            border-color: #a8caff;
+            font-weight: 500;
+        }
+
+        input[type="checkbox"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: #fff;
+            margin-right: 15px;
+            width: 1.4em;
+            height: 1.4em;
+            border: 0.15em solid #ccc;
+            border-radius: 0.25em;
+            transform: translateY(-0.075em);
+            display: grid;
+            place-content: center;
+            flex-shrink: 0;
+        }
+        
+        input[type="checkbox"]::before {
+            content: "";
+            width: 0.8em;
+            height: 0.8em;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em var(--button-color); /* 체크 색상 */
+            transform-origin: bottom left;
+            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+        }
+
+        input[type="checkbox"]:checked::before {
+            transform: scale(1);
+        }
+        
+        input[type="checkbox"]:checked {
+            border-color: var(--button-color);
+        }
+
+        button, .btn-call, .btn-place {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            margin-top: 30px; /* 버튼 상단 여백 추가 */
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-sizing: border-box; 
+        }
+        
+        button:active, .btn-call:active, .btn-place:active {
+            transform: scale(0.98);
+        }
+        
+        button {
+            background-color: var(--button-color);
+            color: white;
+        }
+
+        button:hover {
+            background-color: var(--button-hover-color);
+        }
+
+        #result-section {
+            text-align: center;
+        }
+
+        #result-level {
+            font-size: clamp(1.8rem, 6vw, 2.2rem);
+            font-weight: 700;
+            margin: 20px 0 10px;
+        }
+
+        .level-1 { color: #2ecc71; } /* 주의 단계: Green */
+        .level-2 { color: #f39c12; } /* 위험 단계: Orange */
+        .level-3 { color: #e74c3c; } /* 고위험 단계: Red */
+
+        #result-description {
+            font-size: 1.1rem;
+            text-align: left;
+            background-color: var(--background-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .action-buttons {
+            margin-top: 20px;
+        }
+
+        .btn-call {
+            background-color: var(--button-color);
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .btn-call:hover {
+            background-color: var(--button-hover-color);
+        }
+
+        .btn-place {
+            background-color: #777;
+            color: white;
+        }
+
+        .btn-place:hover {
+            background-color: #555;
+        }
+        
+        .final-notice {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #fdeeee;
+            border: 1px solid #f9bdbb;
+            border-radius: 8px;
+            font-size: 0.95em;
+            color: #c0392b;
+            font-weight: 500;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="test-section">
+            <div class="header">
+                <h1>혹시 내 마음도 방전?<br>번아웃 증후군 자가진단</h1>
+                <p>
+                    세계보건기구(WHO)가 정의한 번아웃 증후군, <br>
+                    내 마음 건강 상태는 어떤지 점검해보세요.
+                </p>
+            </div>
+            <form id="burnout-form">
+                <div class="question-section">
+                    <h2>에너지 고갈 (Energy Depletion)</h2>
+                    <label><input type="checkbox" name="symptom" value="1"><span>아침에 눈을 뜨면 극심한 피로감을 느낀다.</span></label>
+                    <label><input type="checkbox" name="symptom" value="1"><span>업무나 공부를 시작하기 전에 이미 지쳐있다.</span></label>
+                    <label><input type="checkbox" name="symptom" value="1"><span>퇴근 후 아무것도 할 수 없을 정도로 기운이 없다.</span></label>
+                    <label><input type="checkbox" name="symptom" value="1"><span>예전과 같은 일을 해도 에너지가 훨씬 많이 소모된다.</span></label>
+                </div>
+
+                <div class="question-section">
+                    <h2>심리적 거리감 및 냉소 (Mental Distance & Cynicism)</h2>
+                    <label><input type="checkbox" name="symptom" value="1"><span>내가 하는 일에 대한 열정이 사라지고 냉소적으로 변했다.</span></label>
+                    <label><input type="checkbox" name="symptom" value="1"><span>사람들을 만나는 것이 정신적으로 힘들고 피하고 싶다.</span></label>
+                    <label><input type="checkbox" name="symptom" value="1"><span>사소한 일에도 쉽게 짜증이 나고 감정 조절이 어렵다.</span></label>
+                    <label><input type="checkbox" name="symptom" value="1"><span>모든 일에 부정적인 생각이 먼저 든다.</span></label>
+                </div>
+
+                <div class="question-section">
+                    <h2>효능감 저하 및 동반 증상</h2>
+                    <label><input type="checkbox" name="symptom" value="1"><span>업무 능률이 뚜렷하게 떨어지고 실수가 잦아졌다.</span></label>
+                    <label><input type="checkbox" name="symptom" value="1"><span>내가 하는 일이 무의미하게 느껴지고 성취감이 없다.</span></label>
+                    <label><input type="checkbox" name="symptom" value="1"><span>일에 집중하기 어렵고 머리가 멍할 때가 많다.</span></label>
+                    <label><input type="checkbox" name="symptom" value="1"><span>이유 없는 두통이나 소화불량을 자주 느낀다.</span></label>
+                    <label><input type="checkbox" name="symptom" value="1"><span>가슴이 답답하거나 두근거릴 때가 있다.</span></label>
+                    <label><input type="checkbox" name="symptom" value="1"><span>밤에 잠들기 어렵거나, 자는 도중 자주 깬다.</span></label>
+                </div>
+
+                <button type="button" onclick="showResult()">결과 확인하기</button>
+            </form>
+        </div>
+
+        <div id="result-section" style="display: none;">
+            <div class="header">
+                <h2>번아웃 자가진단 결과</h2>
+            </div>
+            <div class="result-content">
+                <h3 id="result-level"></h3>
+                <p id="result-description"></p>
+                <div class="action-buttons">
+                    <a href="tel:029431668" class="btn-call">
+                        📞 02-943-1668 전화 상담
+                    </a>
+                    <a href="https://naver.me/5WOwhuF8" target="_blank" class="btn-place">
+                        📍 한의원 위치/예약 보기
+                    </a>
+                </div>
+                <div class="final-notice">
+                    본 자가진단은 참고용이며, 개인의 상태에 따른<br><strong>정확한 진단과 치료는 반드시 한의사의 상담을 통해</strong><br>이루어져야 합니다.
+                </div>
+            </div>
+            <button type="button" onclick="resetTest()">다시 테스트하기</button>
+        </div>
+    </div>
+    
+    <script>
+        function showResult() {
+            const form = document.getElementById('burnout-form');
+            const checked = form.querySelectorAll('input[type="checkbox"]:checked');
+            const score = checked.length;
+
+            const testSection = document.getElementById('test-section');
+            const resultSection = document.getElementById('result-section');
+            const resultLevel = document.getElementById('result-level');
+            const resultDescription = document.getElementById('result-description');
+
+            let levelText = '';
+            let levelClass = '';
+            let description = '';
+
+            if (score <= 4) {
+                levelText = '번아웃 주의 단계 (관심 필요)';
+                levelClass = 'level-1';
+                description = "에너지가 조금씩 소진되고 있다는 신호입니다. 아직은 괜찮다고 느낄 수 있지만, 스트레스가 누적되면 번아웃으로 이어질 수 있습니다. 생활습관 개선과 함께 전문가의 조언을 구해보는 것이 좋습니다.";
+            } else if (score <= 9) {
+                levelText = '번아웃 위험 단계 (상담 권유)';
+                levelClass = 'level-2';
+                description = "몸과 마음의 에너지가 많이 고갈된 상태입니다. 한의학적으로는 기운이 부족(氣虛)하고 스트레스로 인한 열(心熱)이 쌓인 상태로 볼 수 있습니다. 업무 효율 저하와 다양한 신체 증상이 동반될 수 있으므로, 방치하지 마시고 길음한의원의 전문적인 진단과 상담을 받아보시는 것을 적극 권장합니다.";
+            } else {
+                levelText = '번아웃 고위험 단계 (적극적 치료 필요)';
+                levelClass = 'level-3';
+                description = "단순한 피로를 넘어 '소진(Exhaustion)' 상태에 가깝습니다. 정신적, 신체적으로 회복이 어려운 상태일 수 있으며, 이는 기혈(氣血)이 모두 허하고 오장육부의 균형이 무너진 것으로 볼 수 있습니다. 반드시 전문가의 치료와 함께 충분한 휴식이 필요합니다. 지금 바로 상담을 예약하세요.";
+            }
+
+            resultLevel.textContent = levelText;
+            resultLevel.className = 'result-level ' + levelClass;
+            resultDescription.textContent = description;
+
+            testSection.style.display = 'none';
+            resultSection.style.display = 'block';
+            window.scrollTo(0, 0); 
+        }
+
+        function resetTest() {
+            document.getElementById('burnout-form').reset();
+            const labels = document.querySelectorAll('#burnout-form label');
+            labels.forEach(label => label.classList.remove('checked'));
+            document.getElementById('test-section').style.display = 'block';
+            document.getElementById('result-section').style.display = 'none';
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const labels = document.querySelectorAll('#burnout-form label');
+            labels.forEach(label => {
+                const checkbox = label.querySelector('input[type="checkbox"]');
+                label.addEventListener('click', (e) => {
+                    setTimeout(() => {
+                        if(checkbox.checked) {
+                            label.classList.add('checked');
+                        } else {
+                            label.classList.remove('checked');
+                        }
+                    }, 0);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
